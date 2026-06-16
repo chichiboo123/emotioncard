@@ -6,22 +6,18 @@ import { NormalMode } from "../components/NormalMode";
 import { RandomMode } from "../components/RandomMode";
 import { basicEmotions, allEmotions } from "../data/emotions";
 import { motion, AnimatePresence } from "framer-motion";
+import { StarryBackground } from "../components/StarryBackground";
 
 export default function Home() {
   const [mode, setMode] = useState<Mode>("normal");
 
   return (
     <div className="min-h-[100dvh] flex flex-col relative overflow-x-hidden">
-      {/* Background Decorative Elements */}
-      <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full opacity-40 blur-3xl" />
-        <div className="absolute top-40 right-20 w-48 h-48 bg-white rounded-full opacity-30 blur-3xl" />
-        <div className="absolute bottom-20 left-1/4 w-64 h-64 bg-white rounded-full opacity-20 blur-3xl" />
-      </div>
+      <StarryBackground />
 
       <Header mode={mode} onModeChange={setMode} />
 
-      <main className="flex-1 flex flex-col w-full relative z-0">
+      <main className="flex-1 flex flex-col w-full relative z-10">
         <AnimatePresence mode="wait">
           {mode === "normal" ? (
             <motion.div
@@ -32,7 +28,7 @@ export default function Home() {
               transition={{ duration: 0.3 }}
               className="w-full flex-1 flex flex-col"
             >
-              <NormalMode emotions={allEmotions} />
+              <NormalMode />
             </motion.div>
           ) : (
             <motion.div

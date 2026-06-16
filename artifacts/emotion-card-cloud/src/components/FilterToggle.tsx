@@ -8,17 +8,17 @@ interface FilterToggleProps {
 export function FilterToggle({ showAll, onChange }: FilterToggleProps) {
   return (
     <div 
-      className="inline-flex items-center gap-2 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border shadow-sm"
+      className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-md px-5 py-2.5 rounded-full border shadow-sm"
       data-testid="filter-toggle"
     >
-      <span className="text-sm font-semibold text-foreground mr-2">감정 종류:</span>
+      <span className="text-sm font-bold text-foreground/80 mr-2">감정 종류:</span>
       <button
         onClick={() => onChange(false)}
         className={cn(
-          "px-3 py-1.5 rounded-full text-xs font-bold transition-colors",
+          "px-4 py-2 rounded-full text-sm font-bold transition-colors",
           !showAll 
-            ? "bg-primary text-primary-foreground" 
-            : "bg-transparent text-muted-foreground hover:bg-white"
+            ? "bg-primary text-primary-foreground shadow-sm" 
+            : "bg-transparent text-muted-foreground hover:bg-white/80"
         )}
       >
         기본 감정 8개
@@ -26,10 +26,10 @@ export function FilterToggle({ showAll, onChange }: FilterToggleProps) {
       <button
         onClick={() => onChange(true)}
         className={cn(
-          "px-3 py-1.5 rounded-full text-xs font-bold transition-colors",
+          "px-4 py-2 rounded-full text-sm font-bold transition-colors",
           showAll 
-            ? "bg-primary text-primary-foreground" 
-            : "bg-transparent text-muted-foreground hover:bg-white"
+            ? "bg-primary text-primary-foreground shadow-sm" 
+            : "bg-transparent text-muted-foreground hover:bg-white/80"
         )}
       >
         전체 감정 24개
