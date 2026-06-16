@@ -24,7 +24,7 @@ export function FamilyCard({ group, isExpanded, onToggle, index }: FamilyCardPro
         onClick={onToggle}
         aria-expanded={isExpanded}
         aria-label={`${familyLabel} 감정 ${isExpanded ? "접기" : "단계별로 펼치기"}`}
-        className="text-left relative group outline-none focus-visible:ring-4 focus-visible:ring-primary rounded-[2rem] w-full"
+        className="text-left relative outline-none focus-visible:ring-4 focus-visible:ring-primary rounded-[2rem] w-full"
         data-testid={`card-family-${group.family}`}
       >
         <EmotionCard
@@ -33,20 +33,6 @@ export function FamilyCard({ group, isExpanded, onToggle, index }: FamilyCardPro
           compact
           className="min-h-[200px] sm:min-h-[220px] lg:min-h-[240px] cursor-pointer"
         />
-        <div className="absolute inset-x-0 bottom-2 flex justify-center">
-          <div className="flex items-center gap-1 bg-black/10 backdrop-blur-sm text-black/60 rounded-full pl-3 pr-2 py-1 border border-black/5 group-hover:bg-black/20 transition-colors">
-            <span className="text-xs font-bold whitespace-nowrap">
-              {isExpanded ? "접기" : "단계별 보기"}
-            </span>
-            <span
-              className="material-icons-round block text-lg transition-transform duration-300"
-              style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)" }}
-              aria-hidden="true"
-            >
-              expand_more
-            </span>
-          </div>
-        </div>
       </button>
 
       <AnimatePresence>
