@@ -4,7 +4,6 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { NormalMode } from "../components/NormalMode";
 import { RandomMode } from "../components/RandomMode";
-import { basicEmotions, allEmotions } from "../data/emotions";
 import { motion, AnimatePresence } from "framer-motion";
 import { StarryBackground } from "../components/StarryBackground";
 
@@ -39,7 +38,7 @@ export default function Home() {
               transition={{ duration: 0.3 }}
               className="w-full flex-1 flex flex-col"
             >
-              <RandomMode basicEmotions={basicEmotions} allEmotions={allEmotions} />
+              <RandomMode />
             </motion.div>
           )}
         </AnimatePresence>

@@ -1,39 +1,38 @@
 import { cn } from "@/lib/utils";
 
+export type PoolSize = 4 | 8 | 24;
+
 interface FilterToggleProps {
-  showAll: boolean;
-  onChange: (showAll: boolean) => void;
+  poolSize: PoolSize;
+  onChange: (size: PoolSize) => void;
 }
 
-export function FilterToggle({ showAll, onChange }: FilterToggleProps) {
+const OPTIONS: { size: PoolSize; label: string }[] = [
+  { size: 4, label: "4개" },
+  { size: 8, label: "8개" },
+  { size: 24, label: "24개" },
+];
+
+export function FilterToggle({ poolSize, onChange }: FilterToggleProps) {
   return (
-    <div 
-      className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-md px-5 py-2.5 rounded-full border shadow-sm"
+    <div
+      className="inline-flex items-center p-1 bg-white/60 backdrop-blur-md rounded-full border shadow-sm"
       data-testid="filter-toggle"
     >
-      <span className="text-sm font-bold text-foreground/80 mr-2">감정 종류:</span>
-      <button
-        onClick={() => onChange(false)}
-        className={cn(
-          "px-4 py-2 rounded-full text-sm font-bold transition-colors",
-          !showAll 
-            ? "bg-primary text-primary-foreground shadow-sm" 
-            : "bg-transparent text-muted-foreground hover:bg-white/80"
-        )}
-      >
-        기본 감정 8개
-      </button>
-      <button
-        onClick={() => onChange(true)}
-        className={cn(
-          "px-4 py-2 rounded-full text-sm font-bold transition-colors",
-          showAll 
-            ? "bg-primary text-primary-foreground shadow-sm" 
-            : "bg-transparent text-muted-foreground hover:bg-white/80"
-        )}
-      >
-        전체 감정 24개
-      </button>
+      {OPTIONS.map(({ size, label }) => (
+        <button
+          key={size}
+          onClick={() => onChange(size)}
+          className={cn(
+            "px-4 sm:px-5 py-2 rounded-full text-sm font-bold transition-all duration-200",
+            poolSize === size
+              ? "bg-primary text-primary-foreground shadow-sm"
+              : "bg-transparent text-muted-foreground hover:bg-white/80"
+          )}
+        >
+          {label}
+        </button>
+      ))}
     </div>
   );
 }
