@@ -14,17 +14,20 @@ interface SegmentedControlProps {
   ariaLabel?: string;
   testId?: string;
   className?: string;
+  /** 부모가 이미 배경/테두리를 제공할 때, 자체 알약 배경 없이 버튼만 노출 */
+  bare?: boolean;
 }
 
 /** 앱 전체에서 통일된 모양으로 쓰이는 알약형 분절 토글 */
-export function SegmentedControl({ options, ariaLabel, testId, className }: SegmentedControlProps) {
+export function SegmentedControl({ options, ariaLabel, testId, className, bare }: SegmentedControlProps) {
   return (
     <div
       role="group"
       aria-label={ariaLabel}
       data-testid={testId}
       className={cn(
-        "inline-flex items-center p-1 bg-white/60 backdrop-blur-md rounded-full border shadow-sm",
+        "inline-flex items-center",
+        !bare && "p-1 bg-white/60 backdrop-blur-md rounded-full border shadow-sm",
         className,
       )}
     >
