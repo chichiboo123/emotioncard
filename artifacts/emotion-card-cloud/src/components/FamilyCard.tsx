@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { EmotionGroup } from "../data/emotions";
+import { EmotionGroup, getFamilyLabel } from "../data/emotions";
+import { useDisplayMode } from "../hooks/useDisplayMode";
 import { EmotionCard } from "./EmotionCard";
 
 interface FamilyCardProps {
@@ -10,6 +11,9 @@ interface FamilyCardProps {
 }
 
 export function FamilyCard({ group, isExpanded, onToggle, index }: FamilyCardProps) {
+  const { displayMode } = useDisplayMode();
+  const familyLabel = getFamilyLabel(group, displayMode);
+
   // 표지(cover) 카드가 이미 '기본(2단계)' 감정을 보여주므로,
   // 펼침 영역에서는 중복을 피하기 위해 약(1단계)·강(3단계) 단계만 노출한다.
   const stageEmotions = group.emotions.filter((e) => e.id !== group.basic.id);
@@ -19,7 +23,7 @@ export function FamilyCard({ group, isExpanded, onToggle, index }: FamilyCardPro
       <button
         onClick={onToggle}
         aria-expanded={isExpanded}
-        aria-label={`${group.name} 감정 ${isExpanded ? "접기" : "단계별로 펼치기"}`}
+        aria-label={`${familyLabel} 감정 ${isExpanded ? "접기" : "단계별로 펼치기"}`}
         className="text-left relative group outline-none focus-visible:ring-4 focus-visible:ring-primary rounded-[2rem] w-full"
         data-testid={`card-family-${group.family}`}
       >
@@ -27,7 +31,7 @@ export function FamilyCard({ group, isExpanded, onToggle, index }: FamilyCardPro
           emotion={group.basic}
           index={index}
           compact
-          className="min-h-[150px] sm:min-h-[170px] lg:min-h-[190px] cursor-pointer"
+          className="min-h-[200px] sm:min-h-[220px] lg:min-h-[240px] cursor-pointer"
         />
         <div className="absolute inset-x-0 bottom-2 flex justify-center">
           <div className="flex items-center gap-1 bg-black/10 backdrop-blur-sm text-black/60 rounded-full pl-3 pr-2 py-1 border border-black/5 group-hover:bg-black/20 transition-colors">
