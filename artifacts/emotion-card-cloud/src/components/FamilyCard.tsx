@@ -50,7 +50,8 @@ export function FamilyCard({ group, isExpanded, onToggle, index }: FamilyCardPro
                   key={emotion.id}
                   emotion={emotion}
                   index={i}
-                  className="min-h-[160px] sm:min-h-[200px]"
+                  compact
+                  className="min-h-[200px] sm:min-h-[220px] lg:min-h-[240px]"
                 />
               ))}
             </div>

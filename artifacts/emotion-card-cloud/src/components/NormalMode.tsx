@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Emotion, EmotionGroup, allEmotions, emotionGroups, familyOrder } from "../data/emotions";
 import { FamilyCard } from "./FamilyCard";
 import { EmotionCard } from "./EmotionCard";
-import { SegmentedControl } from "./SegmentedControl";
+import { cn } from "@/lib/utils";
 
 type DisplayMode = "grouped" | "shuffled";
 
@@ -35,26 +35,20 @@ export function NormalMode() {
             : "24가지 감정이 무작위로 섞였어요."}
         </p>
         <div className="flex justify-center sm:justify-end shrink-0">
-          <SegmentedControl
-            ariaLabel="카드 정렬 방식"
-            testId="sort-toggle"
-            options={[
-              {
-                id: "sort-grouped",
-                label: "다시 정렬",
-                icon: "format_list_numbered",
-                active: displayMode === "grouped",
-                onClick: handleSort,
-              },
-              {
-                id: "sort-shuffled",
-                label: "카드 섞기",
-                icon: "shuffle",
-                active: displayMode === "shuffled",
-                onClick: handleShuffle,
-              },
-            ]}
-          />
+          <button
+            onClick={displayMode === "grouped" ? handleShuffle : handleSort}
+            data-testid="btn-toggle-shuffle"
+            aria-label={displayMode === "grouped" ? "카드 섞기" : "다시 정렬하기"}
+            className={cn(
+              "flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap",
+              "bg-white/60 backdrop-blur-md border shadow-sm text-muted-foreground hover:text-foreground hover:bg-white/80 transition-all duration-300",
+            )}
+          >
+            <span className="material-icons-round text-base sm:text-lg" aria-hidden="true">
+              {displayMode === "grouped" ? "shuffle" : "format_list_numbered"}
+            </span>
+            {displayMode === "grouped" ? "카드 섞기" : "다시 정렬"}
+          </button>
         </div>
       </div>
 
@@ -79,7 +73,8 @@ export function NormalMode() {
                 <EmotionCard
                   emotion={emotion}
                   index={i}
-                  className="h-full min-h-[210px]"
+                  compact
+                  className="h-full min-h-[200px] sm:min-h-[220px] lg:min-h-[240px]"
                 />
               </motion.div>
             ))}
