@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Emotion, levelLabel } from "../data/emotions";
+import { Emotion, levelLabel, getEmotionLabel } from "../data/emotions";
+import { useDisplayMode } from "../hooks/useDisplayMode";
 import { cn } from "@/lib/utils";
 
 interface EmotionCardProps {
@@ -13,6 +14,9 @@ interface EmotionCardProps {
 }
 
 export function EmotionCard({ emotion, index = 0, className = "", testId, isBase, compact }: EmotionCardProps) {
+  const { displayMode } = useDisplayMode();
+  const label = getEmotionLabel(emotion, displayMode);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -62,7 +66,7 @@ export function EmotionCard({ emotion, index = 0, className = "", testId, isBase
         "font-black tracking-tight leading-tight break-keep drop-shadow-sm",
         compact ? "text-xl sm:text-2xl lg:text-3xl mb-1.5 mt-2" : "text-3xl sm:text-4xl lg:text-5xl mb-3 mt-4"
       )}>
-        {emotion.word}
+        {label}
       </h2>
 
       {/* Description */}
