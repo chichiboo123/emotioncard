@@ -16,10 +16,12 @@ interface SegmentedControlProps {
   className?: string;
   /** 부모가 이미 배경/테두리를 제공할 때, 자체 알약 배경 없이 버튼만 노출 */
   bare?: boolean;
+  /** 더 작은 패딩/폰트로 공간을 적게 차지하는 콤팩트 모드 */
+  compact?: boolean;
 }
 
 /** 앱 전체에서 통일된 모양으로 쓰이는 알약형 분절 토글 */
-export function SegmentedControl({ options, ariaLabel, testId, className, bare }: SegmentedControlProps) {
+export function SegmentedControl({ options, ariaLabel, testId, className, bare, compact }: SegmentedControlProps) {
   return (
     <div
       role="group"
@@ -39,13 +41,20 @@ export function SegmentedControl({ options, ariaLabel, testId, className, bare }
           aria-label={option.ariaLabel ?? option.label}
           data-testid={`segment-${option.id}`}
           className={cn(
-            "flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 whitespace-nowrap",
+            "flex items-center gap-1 rounded-full font-bold transition-all duration-300 whitespace-nowrap",
+            compact ? "px-2.5 py-1 text-xs" : "px-3 sm:px-4 py-2 text-xs sm:text-sm",
             option.active
               ? "bg-primary text-primary-foreground shadow-md"
               : "text-muted-foreground hover:text-foreground hover:bg-white/80",
           )}
         >
-          <span className="material-icons-round text-base sm:text-lg" aria-hidden="true">
+          <span
+            className={cn(
+              "material-icons-round",
+              compact ? "text-sm" : "text-base sm:text-lg",
+            )}
+            aria-hidden="true"
+          >
             {option.icon}
           </span>
           {option.label}
