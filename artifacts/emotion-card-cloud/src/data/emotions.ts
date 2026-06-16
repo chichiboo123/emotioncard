@@ -72,7 +72,7 @@ export const allEmotions: Emotion[] = [
   // 놀라움 계열 (하늘)
   { id: "distraction", word: "혼란", description: "갑자기 무슨 일이 생겨서 머릿속이 하얘지고 정신이 어리둥절해지는 느낌이에요.", bgColor: "#CDEBF7", textColor: "#155E80", level: 1, family: "surprise" },
   { id: "surprise", word: "놀라움", description: "전혀 예상하지 못한 일이 갑자기 일어났을 때 눈이 동그래지는 느낌이에요.", bgColor: "#7FD0EE", textColor: "#0C4D6B", level: 2, family: "surprise" },
-  { id: "amazement", word: "깜짝놀람", description: "세상에! 이런 게 있다니! 입이 떡 벌어질 만큼 놀랍고 신기한 느낌이에요!", bgColor: "#3BA7D9", textColor: "#F0FAFF", level: 3, family: "surprise" },
+  { id: "amazement", word: "깜짝 놀람", description: "세상에! 이런 게 있다니! 입이 떡 벌어질 만큼 놀랍고 신기한 느낌이에요!", bgColor: "#3BA7D9", textColor: "#F0FAFF", level: 3, family: "surprise" },
 
   // 슬픔 계열 (파랑)
   { id: "pensiveness", word: "수심", description: "딱히 이유는 없는데 기운이 없고 어깨가 처지는 느낌이에요.", bgColor: "#CBD7F2", textColor: "#2A3F7A", level: 1, family: "sadness" },
@@ -128,7 +128,7 @@ export const emotionGroups: EmotionGroup[] = familyOrder.map((family) => {
 });
 
 export const levelLabel: Record<EmotionLevel, string> = {
-  1: "1단계 · 약",
-  2: "2단계 · 기본",
-  3: "3단계 · 강",
+  1: "1단계",
+  2: "2단계",
+  3: "3단계",
 };

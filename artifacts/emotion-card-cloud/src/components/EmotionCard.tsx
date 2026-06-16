@@ -24,7 +24,7 @@ export function EmotionCard({ emotion, index = 0, className = "", testId, isBase
       }}
       whileHover={{ y: -8, scale: 1.02 }}
       className={cn(
-        "relative flex flex-col p-8 sm:p-10 justify-center items-center text-center shadow-lg border-[3px] sm:border-4 transition-shadow",
+        "relative flex flex-col p-6 sm:p-8 lg:p-10 justify-center items-center text-center shadow-lg border-[3px] sm:border-4 transition-shadow",
         isBase ? "border-white shadow-xl ring-4 ring-primary/20" : "border-white/40",
         className
       )}
@@ -52,12 +52,12 @@ export function EmotionCard({ emotion, index = 0, className = "", testId, isBase
       </div>
 
       {/* Word */}
-      <h2 className="text-4xl sm:text-[3.5rem] font-black tracking-tight mb-4 drop-shadow-sm mt-4">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight break-keep mb-3 drop-shadow-sm mt-4">
         {emotion.word}
       </h2>
-      
+
       {/* Description */}
-      <p className="text-sm sm:text-base font-semibold leading-relaxed max-w-[280px] opacity-90 break-keep">
+      <p className="text-sm sm:text-base font-normal leading-relaxed max-w-[260px] opacity-90 break-keep">
         {emotion.description}
       </p>
 

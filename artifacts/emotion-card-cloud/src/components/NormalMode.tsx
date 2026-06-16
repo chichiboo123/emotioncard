@@ -63,7 +63,7 @@ export function NormalMode() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-4"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 auto-rows-fr gap-4 sm:gap-5"
           >
             {shuffledEmotions.map((emotion, i) => (
               <motion.div
@@ -71,11 +71,12 @@ export function NormalMode() {
                 initial={{ opacity: 0, scale: 0.85 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 25, delay: i * 0.02 }}
+                className="h-full"
               >
                 <EmotionCard
                   emotion={emotion}
                   index={i}
-                  className="min-h-[180px] sm:min-h-[220px]"
+                  className="h-full min-h-[210px]"
                 />
               </motion.div>
             ))}
