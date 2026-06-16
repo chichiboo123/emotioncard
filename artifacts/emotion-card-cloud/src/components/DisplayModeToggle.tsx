@@ -7,13 +7,18 @@ const OPTIONS: { mode: DisplayMode; label: string; icon: string }[] = [
   { mode: "adult", label: "어른모드", icon: "person" },
 ];
 
-export function DisplayModeToggle() {
+interface DisplayModeToggleProps {
+  bare?: boolean;
+}
+
+export function DisplayModeToggle({ bare }: DisplayModeToggleProps) {
   const { displayMode, setDisplayMode } = useDisplayMode();
 
   return (
     <SegmentedControl
       ariaLabel="표시 모드 선택"
       testId="display-mode-toggle"
+      bare={bare}
       options={OPTIONS.map(({ mode, label, icon }) => ({
         id: `display-${mode}`,
         label,

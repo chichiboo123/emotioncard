@@ -5,13 +5,15 @@ export type Mode = "normal" | "random";
 interface ModeToggleProps {
   mode: Mode;
   onChange: (mode: Mode) => void;
+  bare?: boolean;
 }
 
-export function ModeToggle({ mode, onChange }: ModeToggleProps) {
+export function ModeToggle({ mode, onChange, bare }: ModeToggleProps) {
   return (
     <SegmentedControl
       ariaLabel="보기 방식 선택"
       testId="mode-toggle"
+      bare={bare}
       options={[
         {
           id: "view-normal",

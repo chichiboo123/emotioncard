@@ -17,9 +17,11 @@ export function Header({ mode, onModeChange }: HeaderProps) {
           여기 있어 감정카드
         </h1>
       </div>
-      <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
-        <DisplayModeToggle />
-        <ModeToggle mode={mode} onChange={onModeChange} />
+      <div className="flex flex-col sm:flex-row items-stretch gap-1.5 sm:gap-1 p-1.5 bg-white/60 backdrop-blur-md rounded-2xl sm:rounded-full border shadow-sm">
+        <DisplayModeToggle bare />
+        <div className="hidden sm:block w-px self-stretch bg-foreground/10" aria-hidden="true" />
+        <div className="block sm:hidden h-px w-full bg-foreground/10" aria-hidden="true" />
+        <ModeToggle mode={mode} onChange={onModeChange} bare />
       </div>
     </header>
   );
