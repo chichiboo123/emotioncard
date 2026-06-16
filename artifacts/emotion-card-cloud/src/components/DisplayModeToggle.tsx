@@ -9,9 +9,10 @@ const OPTIONS: { mode: DisplayMode; label: string; icon: string }[] = [
 
 interface DisplayModeToggleProps {
   bare?: boolean;
+  compact?: boolean;
 }
 
-export function DisplayModeToggle({ bare }: DisplayModeToggleProps) {
+export function DisplayModeToggle({ bare, compact }: DisplayModeToggleProps) {
   const { displayMode, setDisplayMode } = useDisplayMode();
 
   return (
@@ -19,6 +20,7 @@ export function DisplayModeToggle({ bare }: DisplayModeToggleProps) {
       ariaLabel="표시 모드 선택"
       testId="display-mode-toggle"
       bare={bare}
+      compact={compact}
       options={OPTIONS.map(({ mode, label, icon }) => ({
         id: `display-${mode}`,
         label,

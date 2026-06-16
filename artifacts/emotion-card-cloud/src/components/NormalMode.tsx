@@ -40,11 +40,11 @@ export function NormalMode() {
             data-testid="btn-toggle-shuffle"
             aria-label={displayMode === "grouped" ? "카드 섞기" : "다시 정렬하기"}
             className={cn(
-              "flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap",
+              "flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold whitespace-nowrap",
               "bg-white/60 backdrop-blur-md border shadow-sm text-muted-foreground hover:text-foreground hover:bg-white/80 transition-all duration-300",
             )}
           >
-            <span className="material-icons-round text-base sm:text-lg" aria-hidden="true">
+            <span className="material-icons-round text-sm" aria-hidden="true">
               {displayMode === "grouped" ? "shuffle" : "format_list_numbered"}
             </span>
             {displayMode === "grouped" ? "카드 섞기" : "다시 정렬"}

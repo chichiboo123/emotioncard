@@ -6,14 +6,16 @@ interface ModeToggleProps {
   mode: Mode;
   onChange: (mode: Mode) => void;
   bare?: boolean;
+  compact?: boolean;
 }
 
-export function ModeToggle({ mode, onChange, bare }: ModeToggleProps) {
+export function ModeToggle({ mode, onChange, bare, compact }: ModeToggleProps) {
   return (
     <SegmentedControl
       ariaLabel="보기 방식 선택"
       testId="mode-toggle"
       bare={bare}
+      compact={compact}
       options={[
         {
           id: "view-normal",
