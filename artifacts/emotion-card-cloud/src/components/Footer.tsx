@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="w-full py-8 mt-auto flex flex-col items-center justify-center gap-3 opacity-70 hover:opacity-100 transition-opacity z-10">
+    <footer className="w-full shrink-0 py-3 sm:py-4 mt-auto flex flex-col items-center justify-center gap-1.5 opacity-70 hover:opacity-100 transition-opacity z-10">
       <a
         href="https://litt.ly/chichiboo"
         target="_blank"
