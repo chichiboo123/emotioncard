@@ -1,0 +1,28 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B5C6E0"/>
+      <stop offset="0.55" stop-color="#E6E6FA"/>
+      <stop offset="1" stop-color="#FFF0E6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded background (Little Prince sky) -->
+  <rect width="64" height="64" rx="16" fill="url(#bg)"/>
+
+  <!-- Fanned emotion cards (pivot at bottom-centre 32,54) -->
+  <g>
+    <!-- back-left: anger (red) -->
+    <rect x="22" y="24" width="20" height="30" rx="5" fill="#E87B72" stroke="#ffffff" stroke-width="2.5"
+          transform="rotate(-26 32 54)"/>
+    <!-- back-right: sadness (blue) -->
+    <rect x="22" y="24" width="20" height="30" rx="5" fill="#7C9FD9" stroke="#ffffff" stroke-width="2.5"
+          transform="rotate(26 32 54)"/>
+    <!-- front-centre: joy (gold) -->
+    <rect x="22" y="22" width="20" height="30" rx="5" fill="#FFE066" stroke="#ffffff" stroke-width="2.5"/>
+  </g>
+
+  <!-- Sparkle star -->
+  <path d="M32 7.5c1.2 4 2.6 5.4 6.6 6.6-4 1.2-5.4 2.6-6.6 6.6-1.2-4-2.6-5.4-6.6-6.6 4-1.2 5.4-2.6 6.6-6.6z"
+        fill="#F5B921" stroke="#ffffff" stroke-width="1"/>
+</svg>
