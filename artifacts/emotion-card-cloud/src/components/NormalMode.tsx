@@ -27,23 +27,32 @@ export function NormalMode() {
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-4 pb-16 relative z-10">
-      <div className="flex justify-end gap-2 sm:gap-3 mb-6 sm:mb-8">
-        <button
-          onClick={handleShuffle}
-          data-testid="btn-shuffle"
-          className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-white/70 hover:bg-white backdrop-blur-md text-foreground rounded-full shadow-sm border font-bold text-xs sm:text-sm transition-all"
-        >
-          <span className="material-icons-round text-base sm:text-xl">shuffle</span>
-          카드 섞기
-        </button>
-        <button
-          onClick={handleSort}
-          data-testid="btn-sort"
-          className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-white/70 hover:bg-white backdrop-blur-md text-foreground rounded-full shadow-sm border font-bold text-xs sm:text-sm transition-all"
-        >
-          <span className="material-icons-round text-base sm:text-xl">format_list_numbered</span>
-          다시 정렬
-        </button>
+      <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-3 mb-6 sm:mb-8">
+        <p className="text-sm font-semibold text-foreground/70 break-keep text-center sm:text-left">
+          {displayMode === "grouped"
+            ? "카드를 누르면 약 · 강 단계의 감정이 함께 펼쳐져요."
+            : "24가지 감정이 무작위로 섞였어요."}
+        </p>
+        <div className="flex justify-center sm:justify-end gap-2 sm:gap-3 shrink-0">
+          <button
+            onClick={handleShuffle}
+            data-testid="btn-shuffle"
+            aria-pressed={displayMode === "shuffled"}
+            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-white/70 hover:bg-white backdrop-blur-md text-foreground rounded-full shadow-sm border font-bold text-xs sm:text-sm transition-all"
+          >
+            <span className="material-icons-round text-base sm:text-xl" aria-hidden="true">shuffle</span>
+            카드 섞기
+          </button>
+          <button
+            onClick={handleSort}
+            data-testid="btn-sort"
+            aria-pressed={displayMode === "grouped"}
+            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-white/70 hover:bg-white backdrop-blur-md text-foreground rounded-full shadow-sm border font-bold text-xs sm:text-sm transition-all"
+          >
+            <span className="material-icons-round text-base sm:text-xl" aria-hidden="true">format_list_numbered</span>
+            다시 정렬
+          </button>
+        </div>
       </div>
 
       <AnimatePresence mode="wait">

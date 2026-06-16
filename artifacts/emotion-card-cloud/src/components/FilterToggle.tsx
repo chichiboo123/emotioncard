@@ -23,6 +23,8 @@ export function FilterToggle({ poolSize, onChange }: FilterToggleProps) {
         <button
           key={size}
           onClick={() => onChange(size)}
+          aria-pressed={poolSize === size}
+          aria-label={`감정 ${label} 중에서 뽑기`}
           className={cn(
             "px-4 sm:px-5 py-2 rounded-full text-sm font-bold transition-all duration-200",
             poolSize === size
