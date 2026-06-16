@@ -26,8 +26,8 @@ export function NormalMode() {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-4 pb-16 relative z-10">
-      <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-3 mb-6 sm:mb-8">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-2 sm:py-3 relative z-10">
+      <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-2 mb-3 sm:mb-4">
         <p className="text-sm font-semibold text-foreground/70 break-keep text-center sm:text-left">
           {displayMode === "grouped"
             ? "카드를 누르면 약 · 강 단계의 감정이 함께 펼쳐져요."
@@ -89,7 +89,7 @@ export function NormalMode() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 sm:gap-x-6 gap-y-6 sm:gap-y-8 items-start"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 sm:gap-x-4 gap-y-3 sm:gap-y-4 items-start"
           >
             {groups.map((group, index) => (
               <motion.div

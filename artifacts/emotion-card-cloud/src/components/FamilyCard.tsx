@@ -15,7 +15,7 @@ export function FamilyCard({ group, isExpanded, onToggle, index }: FamilyCardPro
   const stageEmotions = group.emotions.filter((e) => e.id !== group.basic.id);
 
   return (
-    <motion.div layout className="flex flex-col gap-3">
+    <motion.div layout className="flex flex-col gap-2">
       <button
         onClick={onToggle}
         aria-expanded={isExpanded}
@@ -26,9 +26,10 @@ export function FamilyCard({ group, isExpanded, onToggle, index }: FamilyCardPro
         <EmotionCard
           emotion={group.basic}
           index={index}
-          className="min-h-[220px] sm:min-h-[280px] cursor-pointer"
+          compact
+          className="min-h-[150px] sm:min-h-[170px] lg:min-h-[190px] cursor-pointer"
         />
-        <div className="absolute inset-x-0 bottom-3 flex justify-center">
+        <div className="absolute inset-x-0 bottom-2 flex justify-center">
           <div className="flex items-center gap-1 bg-black/10 backdrop-blur-sm text-black/60 rounded-full pl-3 pr-2 py-1 border border-black/5 group-hover:bg-black/20 transition-colors">
             <span className="text-xs font-bold whitespace-nowrap">
               {isExpanded ? "접기" : "단계별 보기"}

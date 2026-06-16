@@ -53,13 +53,13 @@ export function RandomMode() {
   };
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 relative z-10">
-      <div className="mb-8 sm:mb-12 flex flex-col items-center gap-2">
+    <div className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl mx-auto px-4 sm:px-6 py-2 sm:py-3 relative z-10">
+      <div className="mb-3 sm:mb-4 flex flex-col items-center gap-2">
         <p className="text-sm font-semibold text-foreground/70">뽑을 감정 카드의 범위를 골라보세요</p>
         <FilterToggle poolSize={poolSize} onChange={handlePoolChange} />
       </div>
 
-      <div className="relative w-full max-w-[280px] sm:max-w-sm aspect-[3/4] sm:aspect-[3/4] mb-10 sm:mb-16 perspective-1000">
+      <div className="relative w-[min(78vw,280px)] sm:w-[min(40vw,24rem)] aspect-[3/4] max-h-[42vh] sm:max-h-[48vh] mb-4 sm:mb-6 perspective-1000">
         <motion.div
           className="w-full h-full relative preserve-3d"
           animate={{
@@ -93,7 +93,7 @@ export function RandomMode() {
         disabled={isDrawing}
         data-testid="btn-draw-card"
         aria-label={isFlipped ? "감정 카드 다시 뽑기" : "감정 카드 뽑기"}
-        className="group relative px-8 sm:px-10 py-4 sm:py-5 bg-primary text-primary-foreground rounded-full text-lg sm:text-2xl font-black shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 sm:gap-3 overflow-hidden disabled:opacity-50 disabled:hover:translate-y-0"
+        className="group relative px-6 sm:px-10 py-3 sm:py-4 bg-primary text-primary-foreground rounded-full text-base sm:text-2xl font-black shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 sm:gap-3 overflow-hidden disabled:opacity-50 disabled:hover:translate-y-0 shrink-0"
       >
         <span className="relative z-10 flex items-center gap-2 sm:gap-3">
           <span className="material-icons-round text-2xl sm:text-3xl group-hover:rotate-180 transition-transform duration-500" aria-hidden="true">
