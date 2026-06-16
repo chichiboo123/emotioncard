@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Emotion, EmotionGroup, allEmotions, emotionGroups, familyOrder } from "../data/emotions";
 import { FamilyCard } from "./FamilyCard";
 import { EmotionCard } from "./EmotionCard";
+import { SegmentedControl } from "./SegmentedControl";
 
 type DisplayMode = "grouped" | "shuffled";
 
@@ -33,25 +34,27 @@ export function NormalMode() {
             ? "카드를 누르면 약 · 강 단계의 감정이 함께 펼쳐져요."
             : "24가지 감정이 무작위로 섞였어요."}
         </p>
-        <div className="flex justify-center sm:justify-end gap-2 sm:gap-3 shrink-0">
-          <button
-            onClick={handleShuffle}
-            data-testid="btn-shuffle"
-            aria-pressed={displayMode === "shuffled"}
-            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-white/70 hover:bg-white backdrop-blur-md text-foreground rounded-full shadow-sm border font-bold text-xs sm:text-sm transition-all"
-          >
-            <span className="material-icons-round text-base sm:text-xl" aria-hidden="true">shuffle</span>
-            카드 섞기
-          </button>
-          <button
-            onClick={handleSort}
-            data-testid="btn-sort"
-            aria-pressed={displayMode === "grouped"}
-            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-white/70 hover:bg-white backdrop-blur-md text-foreground rounded-full shadow-sm border font-bold text-xs sm:text-sm transition-all"
-          >
-            <span className="material-icons-round text-base sm:text-xl" aria-hidden="true">format_list_numbered</span>
-            다시 정렬
-          </button>
+        <div className="flex justify-center sm:justify-end shrink-0">
+          <SegmentedControl
+            ariaLabel="카드 정렬 방식"
+            testId="sort-toggle"
+            options={[
+              {
+                id: "sort-grouped",
+                label: "다시 정렬",
+                icon: "format_list_numbered",
+                active: displayMode === "grouped",
+                onClick: handleSort,
+              },
+              {
+                id: "sort-shuffled",
+                label: "카드 섞기",
+                icon: "shuffle",
+                active: displayMode === "shuffled",
+                onClick: handleShuffle,
+              },
+            ]}
+          />
         </div>
       </div>
 
