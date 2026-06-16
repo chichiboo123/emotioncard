@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "감정카드 클라우드"
+version = "1.0.0"
+id = "artifacts/emotion-card-cloud"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20429
+
+[services.development]
+run = "pnpm --filter @workspace/emotion-card-cloud run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/emotion-card-cloud", "run", "build" ]
+publicDir = "artifacts/emotion-card-cloud/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20429"
+BASE_PATH = "/"
