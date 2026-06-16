@@ -1,6 +1,6 @@
-# [Project name]
+# 여기 있어 감정카드
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+로버트 플루치크의 '감정의 바퀴' 이론을 바탕으로 24가지 감정을 카드로 만나며 자신의 마음을 들여다보는 감정 학습 웹앱입니다.
 
 ## Run & Operate
 
@@ -30,7 +30,9 @@ _Populate as you build — non-obvious choices a reader couldn't infer from the 
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- 프런트엔드 SPA는 `artifacts/emotion-card-cloud` (React + Vite + Tailwind). 백엔드/DB는 사용하지 않습니다.
+- 두 가지 모드: **전체 보기**(계열별 24개 감정 카드, 카드를 누르면 약·강 단계가 펼쳐짐)와 **랜덤뽑기**(4·8·24개 범위에서 무작위로 한 장 뽑기).
+- 감정 데이터의 단일 출처는 `artifacts/emotion-card-cloud/src/data/emotions.ts` 입니다.
 
 ## User preferences
 

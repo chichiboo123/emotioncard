@@ -54,7 +54,8 @@ export function RandomMode() {
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center w-full max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 relative z-10">
-      <div className="mb-8 sm:mb-12">
+      <div className="mb-8 sm:mb-12 flex flex-col items-center gap-2">
+        <p className="text-sm font-semibold text-foreground/70">뽑을 감정 카드의 범위를 골라보세요</p>
         <FilterToggle poolSize={poolSize} onChange={handlePoolChange} />
       </div>
 
@@ -91,10 +92,11 @@ export function RandomMode() {
         onClick={handleDraw}
         disabled={isDrawing}
         data-testid="btn-draw-card"
+        aria-label={isFlipped ? "감정 카드 다시 뽑기" : "감정 카드 뽑기"}
         className="group relative px-8 sm:px-10 py-4 sm:py-5 bg-primary text-primary-foreground rounded-full text-lg sm:text-2xl font-black shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 sm:gap-3 overflow-hidden disabled:opacity-50 disabled:hover:translate-y-0"
       >
         <span className="relative z-10 flex items-center gap-2 sm:gap-3">
-          <span className="material-icons-round text-2xl sm:text-3xl group-hover:rotate-180 transition-transform duration-500">
+          <span className="material-icons-round text-2xl sm:text-3xl group-hover:rotate-180 transition-transform duration-500" aria-hidden="true">
             auto_awesome
           </span>
           {isFlipped ? "다시 뽑기" : "카드 뽑기"}

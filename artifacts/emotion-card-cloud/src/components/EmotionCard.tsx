@@ -62,7 +62,7 @@ export function EmotionCard({ emotion, index = 0, className = "", testId, isBase
       </p>
 
       {/* Decorative */}
-      <span className="material-icons-round absolute bottom-4 right-6 text-4xl opacity-[0.08] pointer-events-none">
+      <span className="material-icons-round absolute bottom-4 right-6 text-4xl opacity-[0.08] pointer-events-none" aria-hidden="true">
         stars
       </span>
     </motion.div>

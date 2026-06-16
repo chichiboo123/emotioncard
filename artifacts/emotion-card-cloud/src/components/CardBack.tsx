@@ -15,14 +15,14 @@ export function CardBack() {
         </svg>
       </div>
       
-      <span className="material-icons-round text-6xl text-primary/80 mb-4 drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]">
+      <span className="material-icons-round text-6xl text-primary/80 mb-4 drop-shadow-[0_0_15px_rgba(255,215,0,0.5)]" aria-hidden="true">
         stars
       </span>
       <h3 className="text-white/80 font-black text-2xl tracking-widest">
         EMOTION
       </h3>
-      <p className="text-white/50 font-bold text-xs mt-2 tracking-[0.2em]">
-        CARD CLOUD
+      <p className="text-white/60 font-bold text-sm mt-2 tracking-[0.15em]">
+        여기 있어 감정카드
       </p>
 
       {/* Decorative curved lines */}

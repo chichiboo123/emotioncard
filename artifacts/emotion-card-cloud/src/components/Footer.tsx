@@ -8,7 +8,7 @@ export function Footer() {
         data-testid="footer-link"
         className="text-sm font-medium text-foreground/80 inline-flex items-center gap-2 hover:text-primary transition-colors"
       >
-        <span className="material-icons-round text-base">school</span>
+        <span className="material-icons-round text-base" aria-hidden="true">school</span>
         교육뮤지컬 꿈꾸는 치수쌤
       </a>
       <p className="text-xs text-foreground/60 font-medium">

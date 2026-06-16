@@ -23,7 +23,7 @@ export function ModeToggle({ mode, onChange }: ModeToggleProps) {
         )}
         aria-label="전체 보기 모드"
       >
-        <span className="material-icons-round text-[1.125rem]">grid_view</span>
+        <span className="material-icons-round text-[1.125rem]" aria-hidden="true">grid_view</span>
         전체 보기
       </button>
       <button
@@ -36,7 +36,7 @@ export function ModeToggle({ mode, onChange }: ModeToggleProps) {
         )}
         aria-label="랜덤뽑기 모드"
       >
-        <span className="material-icons-round text-[1.125rem]">style</span>
+        <span className="material-icons-round text-[1.125rem]" aria-hidden="true">style</span>
         랜덤뽑기
       </button>
     </div>

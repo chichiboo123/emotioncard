@@ -128,7 +128,7 @@ export const emotionGroups: EmotionGroup[] = familyOrder.map((family) => {
 });
 
 export const levelLabel: Record<EmotionLevel, string> = {
-  1: "1단계",
-  2: "2단계",
-  3: "3단계",
+  1: "1단계 · 약",
+  2: "2단계 · 기본",
+  3: "3단계 · 강",
 };
