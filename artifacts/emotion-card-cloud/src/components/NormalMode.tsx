@@ -52,7 +52,7 @@ export function NormalMode() {
       <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-2 mb-3 sm:mb-4">
         <p className="text-sm font-semibold text-foreground/70 break-keep text-center sm:text-left">
           {displayMode === "grouped"
-            ? "카드는 눌러 크게 보고, 화살표로 약 · 강 단계 감정을 펼쳐보세요."
+            ? "기본 감정 카드를 눌러 약 · 강 단계 감정을 펼치고, 펼쳐진 카드는 크게 볼 수 있어요."
             : "24가지 감정이 무작위로 섞였어요. 섞기 버튼을 누를 때마다 새로 섞여요."}
         </p>
         <div className="flex justify-center sm:justify-end shrink-0 gap-2">
@@ -64,27 +64,29 @@ export function NormalMode() {
 
       <AnimatePresence>
         {selectedEmotion && (
-          <motion.section
-            key={selectedEmotion.id}
-            initial={{ opacity: 0, y: -12, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -12, scale: 0.96 }}
-            transition={{ type: "spring", stiffness: 260, damping: 24 }}
-            className="mb-5 flex justify-center"
-            aria-live="polite"
+          <motion.div
+            key="selected-emotion-dialog"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/25 px-4 py-6 backdrop-blur-sm"
+            onClick={() => setSelectedEmotion(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${selectedEmotion.word} 카드 크게 보기`}
           >
-            <div className="relative w-full max-w-sm sm:max-w-md">
-              <button
-                type="button"
-                onClick={() => setSelectedEmotion(null)}
-                aria-label="크게 보기 닫기"
-                className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/55 text-foreground/70 shadow-sm backdrop-blur-md transition hover:bg-white/80 hover:text-foreground focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50"
-              >
-                <span className="material-icons-round text-xl" aria-hidden="true">close</span>
-              </button>
-              <EmotionCard emotion={selectedEmotion} className="min-h-[360px] sm:min-h-[430px]" />
-            </div>
-          </motion.section>
+            <motion.div
+              initial={{ opacity: 0, y: 18, scale: 0.92 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 18, scale: 0.92 }}
+              transition={{ type: "spring", stiffness: 260, damping: 24 }}
+              className="w-full max-w-sm sm:max-w-md"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <EmotionCard emotion={selectedEmotion} className="min-h-[360px] sm:min-h-[430px] shadow-2xl" />
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
 

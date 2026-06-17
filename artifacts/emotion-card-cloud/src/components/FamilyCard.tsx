@@ -25,8 +25,10 @@ export function FamilyCard({ group, isExpanded, onToggle, onSelect, index }: Fam
       <div className="relative">
         <button
           type="button"
-          onClick={() => onSelect(group.basic)}
-          aria-label={`${familyLabel} 카드 크게 보기`}
+          onClick={() => (isExpanded ? onSelect(group.basic) : onToggle())}
+          aria-label={
+            isExpanded ? `${familyLabel} 카드 크게 보기` : `${familyLabel} 감정 단계별로 펼치기`
+          }
           className="text-left relative outline-none focus-visible:ring-4 focus-visible:ring-primary rounded-[2rem] w-full"
           data-testid={`card-family-${group.family}`}
         >
@@ -37,26 +39,29 @@ export function FamilyCard({ group, isExpanded, onToggle, onSelect, index }: Fam
             className="min-h-[240px] sm:min-h-[280px] lg:min-h-[320px] cursor-pointer"
           />
         </button>
-        <button
-          type="button"
-          onClick={onToggle}
-          aria-expanded={isExpanded}
-          aria-label={`${familyLabel} 감정 ${isExpanded ? "접기" : "단계별로 펼치기"}`}
-          className={cn(
-            "absolute bottom-3 left-1/2 z-10 flex h-9 w-9 -translate-x-1/2 items-center justify-center rounded-full",
-            "bg-white/55 text-foreground/70 shadow-sm backdrop-blur-md transition hover:bg-white/80 hover:text-foreground",
-            "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50",
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.button
+              type="button"
+              onClick={onToggle}
+              aria-expanded={isExpanded}
+              aria-label={`${familyLabel} 감정 접기`}
+              initial={{ opacity: 0, y: 8, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 8, scale: 0.8 }}
+              transition={{ duration: 0.2 }}
+              className={cn(
+                "absolute bottom-3 left-1/2 z-10 flex h-9 w-9 -translate-x-1/2 items-center justify-center rounded-full",
+                "bg-white/55 text-foreground/70 shadow-sm backdrop-blur-md transition hover:bg-white/80 hover:text-foreground",
+                "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/50",
+              )}
+            >
+              <span className="material-icons-round text-2xl" aria-hidden="true">
+                keyboard_arrow_up
+              </span>
+            </motion.button>
           )}
-        >
-          <motion.span
-            className="material-icons-round text-2xl"
-            aria-hidden="true"
-            animate={{ rotate: isExpanded ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            keyboard_arrow_down
-          </motion.span>
-        </button>
+        </AnimatePresence>
       </div>
 
       <AnimatePresence>
