@@ -18,7 +18,10 @@ export function NormalMode() {
   const handleExpandAll = () => {
     setDisplayMode("grouped");
     setShuffledEmotions([]);
-    setExpandedFamilies(new Set(emotionGroups.map((group) => group.family)));
+    setExpandedFamilies((current) => {
+      const isEveryFamilyExpanded = emotionGroups.every((group) => current.has(group.family));
+      return isEveryFamilyExpanded ? new Set() : new Set(emotionGroups.map((group) => group.family));
+    });
   };
 
   const handleShuffle = () => {
